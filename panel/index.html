@@ -1,0 +1,63 @@
+<html>
+    <head>
+        
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        
+
+<center><h1>DATA</h1></center>
+
+        <div class="content">
+
+
+
+        </div>
+
+<center>
+    
+    <h1>
+        <button onclick="f()">
+         DELETE ALL DATA
+        </button>
+    </h1>
+<center>
+<h1><button onclick="myfunction()"> SHOW ALL DATA</button></h1></center>
+
+<script src="config.js"></script>
+<script>
+    
+    function myfunction(){
+
+
+        db.collection("data").get().then((querySnapshot) => {
+  querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.data());
+  });
+});
+
+    }
+</script>
+
+
+<script>
+
+function f() {
+
+db.collection("data")
+  .get()
+  .then(res => {
+    res.forEach(element => {
+      element.ref.delete();
+    });
+  });
+}
+
+
+
+</body>
+</html>
